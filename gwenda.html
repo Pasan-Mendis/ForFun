@@ -8,7 +8,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;1,600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
-* { box-sizing: border-box; margin:0; padding:0; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 body {
   height: 100vh;
@@ -17,56 +21,36 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  /* CLASSY BACKGROUND */
   background: radial-gradient(circle at top, #2b0f1c, #0d0b12);
   position: relative;
 }
 
-/* Tap to start overlay */
-#startOverlay {
-  position: fixed;
-  top:0; left:0; right:0; bottom:0;
-  background: rgba(0,0,0,0.85);
-  color:#fff;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  font-family:'Playfair Display', serif;
-  font-size:1.6rem;
-  z-index: 9999;
-  cursor:pointer;
-}
-#startOverlay p { margin-top:20px; font-size:1rem; text-align:center; }
-
-/* Floating lights */
+/* soft floating light particles */
 .light {
   position: absolute;
   width: 6px;
   height: 6px;
-  background: rgba(255,182,193,0.4);
+  background: rgba(255, 182, 193, 0.4);
   border-radius: 50%;
   animation: floatLight linear infinite;
   pointer-events: none;
 }
+
 @keyframes floatLight {
-  from { transform: translateY(110vh) scale(0.5); opacity:0; }
-  20% { opacity:1; }
-  to { transform: translateY(-10vh) scale(1.2); opacity:0; }
+  from {
+    transform: translateY(110vh) scale(0.5);
+    opacity: 0;
+  }
+  20% { opacity: 1; }
+  to {
+    transform: translateY(-10vh) scale(1.2);
+    opacity: 0;
+  }
 }
 
-/* Floating petals */
-.petal {
-  position: absolute;
-  top:-10%;
-  font-size: 22px;
-  opacity:0.3;
-  animation: fall linear infinite;
-}
-@keyframes fall {
-  to { transform: translateY(120vh) rotate(360deg); }
-}
-
-/* Card styling */
+/* CARD */
 .card {
   background: rgba(255,255,255,0.94);
   padding: 2.2rem;
@@ -78,101 +62,160 @@ body {
   position: absolute;
   animation: cardEnter 0.9s ease;
 }
+
 @keyframes cardEnter {
-  from { opacity:0; transform: translateY(30px) scale(0.96); }
-  to { opacity:1; transform: translateY(0) scale(1); }
+  from { opacity: 0; transform: translateY(30px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 .hidden {
-  opacity:0;
-  pointer-events:none;
+  opacity: 0;
+  pointer-events: none;
   transform: translateY(20px);
 }
 
-/* Text & buttons */
-h1 { font-family:'Playfair Display', serif; color:#b5172c; margin-bottom:18px; }
-p { color:#444; line-height:1.6; }
+/* TEXT */
+h1 {
+  font-family: 'Playfair Display', serif;
+  color: #b5172c;
+  margin-bottom: 18px;
+}
+
+p {
+  color: #444;
+  line-height: 1.6;
+}
+
+/* BUTTONS */
 button {
   padding: 12px 28px;
-  border:none;
-  border-radius:30px;
-  font-size:1rem;
-  cursor:pointer;
-  margin:10px;
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin: 10px;
   transition: all 0.3s ease;
 }
-#yesBtn { background:#b5172c; color:white; }
-.yes-glow { animation:heartbeat 1.4s infinite; box-shadow:0 0 25px rgba(181,23,44,0.8); }
-@keyframes heartbeat {
-  0% { transform:scale(1); } 25% { transform:scale(1.08); }
-  40% { transform:scale(1); } 60% { transform:scale(1.06); } 100% { transform:scale(1); }
-}
-#noBtn { background:#eee; color:#555; }
-#continueBtn { background:#b5172c; color:white; margin-top:18px; }
 
-/* Letter stage */
+#yesBtn {
+  background: #b5172c;
+  color: white;
+}
+
+/* HEARTBEAT GLOW */
+.yes-glow {
+  animation: heartbeat 1.4s infinite;
+  box-shadow: 0 0 25px rgba(181,23,44,0.8);
+}
+
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  25% { transform: scale(1.08); }
+  40% { transform: scale(1); }
+  60% { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+
+#noBtn {
+  background: #eee;
+  color: #555;
+}
+
+/* LETTER */
 #letter {
-  font-family:'Playfair Display', serif;
-  font-size:1.05rem;
-  line-height:1.8;
-  text-align:left;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  text-align: left;
   white-space: pre-wrap;
 }
-.cursor { display:inline-block; width:2px; height:1.2em; background:#b5172c; animation:blink 1s infinite; }
-@keyframes blink { 50% { opacity:0; } }
 
-/* Hug GIF stage */
-.hug-wrap { position:relative; animation:hugPulse 2.8s ease-in-out infinite; }
-@keyframes hugPulse { 0%,100%{transform:scale(1);} 50%{transform:scale(1.05);} }
-.hug-heart {
-  position:absolute;
-  font-size:22px;
-  animation:heartRise 3s ease-out infinite;
-  pointer-events:none;
+.cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.2em;
+  background: #b5172c;
+  animation: blink 1s infinite;
 }
-@keyframes heartRise { from { transform:translate(-50%,0) scale(0); opacity:1; } to { transform:translate(-50%,-140px) scale(1); opacity:0; } }
 
-.tenor-gif-embed { border-radius:20px; overflow:hidden; margin-top:18px; box-shadow:0 20px 45px rgba(181,23,44,0.35); animation:fadeUp 1.2s ease; }
-@keyframes fadeUp { from{opacity:0; transform:translateY(25px);} to{opacity:1; transform:translateY(0);} }
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+#continueBtn {
+  background: #b5172c;
+  color: white;
+  margin-top: 18px;
+}
+
+/* FINAL HUG STAGE */
+.hug-wrap {
+  position: relative;
+  animation: hugPulse 2.8s ease-in-out infinite;
+}
+
+@keyframes hugPulse {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* floating hearts on hug */
+.hug-heart {
+  position: absolute;
+  font-size: 22px;
+  animation: heartRise 3s ease-out infinite;
+  pointer-events: none;
+}
+
+@keyframes heartRise {
+  from {
+    transform: translate(-50%,0) scale(0);
+    opacity: 1;
+  }
+  to {
+    transform: translate(-50%,-140px) scale(1);
+    opacity: 0;
+  }
+}
+
+.tenor-gif-embed {
+  border-radius: 20px;
+  overflow: hidden;
+  margin-top: 18px;
+  box-shadow: 0 20px 45px rgba(181,23,44,0.35);
+  animation: fadeUp 1.2s ease;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
 /* MOBILE */
-@media (max-width:480px){
-  h1{font-size:1.5rem;}
-  #letter{font-size:0.95rem;}
-  .card{padding:1.8rem;}
+@media (max-width: 480px) {
+  h1 { font-size: 1.5rem; }
+  #letter { font-size: 0.95rem; }
+  .card { padding: 1.8rem; }
 }
 </style>
 </head>
+
 <body>
 
-<!-- TAP TO START OVERLAY -->
-<div id="startOverlay">
-  💖 Tap to Start 💖
-  <p>Let’s make this Valentine’s special…</p>
-</div>
-
-<!-- Floating lights & petals -->
+<!-- floating classy lights -->
 <script>
-for(let i=0;i<24;i++){
-  const l=document.createElement("div");
-  l.className="light";
-  l.style.left=Math.random()*100+"%";
-  l.style.animationDuration=(12+Math.random()*14)+"s";
+for (let i = 0; i < 24; i++) {
+  const l = document.createElement("div");
+  l.className = "light";
+  l.style.left = Math.random() * 100 + "%";
+  l.style.animationDuration = (12 + Math.random() * 14) + "s";
   document.body.appendChild(l);
-}
-for(let i=0;i<18;i++){
-  const p=document.createElement("div");
-  p.className="petal";
-  p.textContent="🌸";
-  p.style.left=Math.random()*100+"%";
-  p.style.animationDuration=(10+Math.random()*10)+"s";
-  document.body.appendChild(p);
 }
 </script>
 
 <!-- BACKGROUND MUSIC -->
 <audio id="bgMusic" loop>
-  <source src="https://docs.google.com/uc?export=download&id=1kpuWovt5ygW3RlF356oJg4RrXQnQgz54" type="audio/mpeg">
+  <source src="perfect.mp3" type="audio/mpeg">
 </audio>
 
 <!-- STAGE 1 -->
@@ -197,6 +240,7 @@ for(let i=0;i<18;i++){
 <!-- STAGE 4 -->
 <div class="card hidden" id="stage4">
   <h1>One last thing… 🧸❤️</h1>
+
   <div class="hug-wrap" id="hugWrap">
     <div class="tenor-gif-embed"
       data-postid="1717058613202827061"
@@ -205,46 +249,49 @@ for(let i=0;i<18;i++){
       data-width="100%">
     </div>
   </div>
+
   <p style="margin-top:16px;color:#b5172c;font-weight:600;">
     I love you endlessly, my lil gwen 💖
   </p>
 </div>
 
 <script>
-const music=document.getElementById("bgMusic");
-const overlay=document.getElementById("startOverlay");
-
-/* TAP TO START */
-overlay.addEventListener("click",()=>{
-  overlay.style.display="none";
+/* MUSIC AUTOPLAY ON FIRST TOUCH */
+const music = document.getElementById("bgMusic");
+document.body.addEventListener("click", () => {
   music.play().catch(()=>{});
-});
+}, { once:true });
 
-/* BUTTON LOGIC */
-const noBtn=document.getElementById("noBtn");
-const yesBtn=document.getElementById("yesBtn");
-const noTexts=["Are you sure?","Think again 😏","You don’t really mean that…"];
-let tease=0, idx=0;
-noBtn.onclick=()=>{
-  noBtn.textContent=noTexts[idx];
-  idx=(idx+1)%noTexts.length;
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+
+const noTexts = [
+  "Are you sure?",
+  "Think again 😏",
+  "You don’t really mean that…"
+];
+
+let tease = 0, idx = 0;
+
+noBtn.onclick = () => {
+  noBtn.textContent = noTexts[idx];
+  idx = (idx + 1) % noTexts.length;
   tease++;
-  if(tease>=3) yesBtn.classList.add("yes-glow");
+  if (tease >= 3) yesBtn.classList.add("yes-glow");
 };
-yesBtn.onclick=()=>transition("stage1","stage2");
-document.getElementById("continueBtn").onclick=()=>{
+
+yesBtn.onclick = () => transition("stage1","stage2");
+document.getElementById("continueBtn").onclick = () => {
   transition("stage2","stage3");
   typeLetter();
 };
 
-/* TRANSITION */
 function transition(from,to){
   document.getElementById(from).classList.add("hidden");
   setTimeout(()=>document.getElementById(to).classList.remove("hidden"),300);
 }
 
-/* TYPE LETTER */
-const text=`Hey my lil gwen,
+const text = `Hey my lil gwen,
 
 From the moment you came into my life,
 everything softened…
@@ -258,13 +305,17 @@ And tonight,
 I just want you to know…
 you’re mine,
 and I’m unapologetically yours ❤️`;
+
 let i=0;
 function typeLetter(){
   if(i<text.length){
-    document.getElementById("letter").textContent+=text.charAt(i++);
+    letter.textContent+=text.charAt(i++);
     setTimeout(typeLetter,45);
   } else {
-    setTimeout(()=>{transition("stage3","stage4"); startHugHearts();},1500);
+    setTimeout(()=>{
+      transition("stage3","stage4");
+      startHugHearts();
+    },1500);
   }
 }
 
